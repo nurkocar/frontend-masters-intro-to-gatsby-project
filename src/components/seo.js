@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Helmet, helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-export function Seo(props) {
+export default function Seo(props) {
   const data = useStaticQuery(graphql`
     query GetSiteMetadata {
       site {
@@ -16,7 +16,7 @@ export function Seo(props) {
     }
   `);
 
-  const defaults = data?.site?.sitMetadata;
+  const defaults = data?.site?.siteMetadata;
 
   const title = props.title || defaults.title;
   const description = props.description || defaults.description;
