@@ -1,9 +1,26 @@
 import * as React from 'react';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 
-export default function () {
+export default function IndexPage() {
+  const data = useStaticQuery(graphql`
+    query GetSiteTitle {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+
+  const meta = data?.site?.siteMetadata ?? {};
+
   return (
-    <main>
-      <h1>Hi Nur</h1>
-    </main>
+    <>
+      <header>{meta.title}</header>
+      <main>
+        <h1>Hi Nur</h1>
+        <Link to="/about">About this site</Link>
+      </main>
+    </>
   );
 }
