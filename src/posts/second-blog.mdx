@@ -3,6 +3,21 @@ title: Second Blog
 description: Watch out, I am on a roll 222
 ---
 
+import { graphql } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+
+export const query = graphql`
+  query SmashBurgerQuery {
+    file(name: { eq: "smashburger" }) {
+      childImageSharp {
+        gatsbyImageData(placeholder: DOMINANT_COLOR)
+      }
+    }
+  }
+`;
+
 # Hello!
+
+<GatsbyImage image={getImage(props.data.file)} alt="a cocktail" />
 
 This is my second post...
